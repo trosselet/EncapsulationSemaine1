@@ -7,6 +7,7 @@ WindowSDL::WindowSDL() : m_sdlWindow(nullptr), m_sdlRenderer(nullptr), m_isRunni
 
 WindowSDL::~WindowSDL()
 {
+    close();
 }
 
 void WindowSDL::createWindow(int width, int height)
@@ -20,25 +21,16 @@ void WindowSDL::createWindow(int width, int height)
     if (!m_sdlWindow)
     {
         std::cout << "Error create window : " << SDL_GetError() << std::endl;
-        SDL_Quit();
     }
 
     m_sdlRenderer = SDL_CreateRenderer(m_sdlWindow, -1, SDL_RENDERER_ACCELERATED);
     if (!m_sdlRenderer)
     {
         std::cout << "Error create renderer : " << SDL_GetError() << std::endl;
-        SDL_Quit();
     }
 
-    if (m_sdlRenderer && m_sdlWindow)
-    {
-        m_isRunning = true;
-    }
-    else
-    {
-        m_isRunning = false;
-    }
-
+    m_isRunning = true;
+    
 }
 
 void WindowSDL::clear()
@@ -75,4 +67,9 @@ void WindowSDL::close()
     if(m_sdlWindow)
         SDL_DestroyWindow(m_sdlWindow);
     SDL_Quit();
+}
+
+SDL_Renderer* WindowSDL::getRenderer()
+{
+    return m_sdlRenderer;
 }

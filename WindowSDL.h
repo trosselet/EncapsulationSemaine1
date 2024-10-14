@@ -20,6 +20,7 @@ public:
     void pollEvents() override;
     bool isRunning() override;
     void close() override;
+    SDL_Renderer* getRenderer();
 };
 
 #endif // WINDOW_SDL_H__

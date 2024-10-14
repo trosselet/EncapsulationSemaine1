@@ -12,6 +12,7 @@ private:
 public:
     SpriteSDL(SDL_Renderer* renderer);
     void drawCircle(int x, int y, int radius) override;
+    
 };
 
 #endif // SPRITE_SDL_H__
