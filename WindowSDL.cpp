@@ -1,7 +1,7 @@
 #include "WindowSDL.h"
 #include <iostream>
 
-WindowSDL::WindowSDL()
+WindowSDL::WindowSDL() : m_sdlWindow(nullptr), m_sdlRenderer(nullptr), m_isRunning(false)
 {
 }
 
@@ -17,14 +17,14 @@ void WindowSDL::createWindow(int width, int height)
     }
 
     m_sdlWindow = SDL_CreateWindow("Ball Generator SDL2", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_SHOWN);
-    if (m_sdlWindow == nullptr)
+    if (!m_sdlWindow)
     {
         std::cout << "Error create window : " << SDL_GetError() << std::endl;
         SDL_Quit();
     }
 
     m_sdlRenderer = SDL_CreateRenderer(m_sdlWindow, -1, SDL_RENDERER_ACCELERATED);
-    if (m_sdlRenderer == nullptr)
+    if (!m_sdlRenderer)
     {
         std::cout << "Error create renderer : " << SDL_GetError() << std::endl;
         SDL_Quit();
@@ -43,12 +43,13 @@ void WindowSDL::createWindow(int width, int height)
 
 void WindowSDL::clear()
 {
+    SDL_SetRenderDrawColor(m_sdlRenderer, 0, 0, 0, 255);
     SDL_RenderClear(m_sdlRenderer);
 }
 
 void WindowSDL::display()
 {
-    SDL_SetRenderDrawColor(m_sdlRenderer, 255, 0, 0, 255);
+    
     SDL_RenderPresent(m_sdlRenderer);
 }
 
@@ -69,7 +70,9 @@ bool WindowSDL::isRunning()
 
 void WindowSDL::close()
 {
-    SDL_DestroyRenderer(m_sdlRenderer);
-    SDL_DestroyWindow(m_sdlWindow);
+    if(m_sdlRenderer)
+        SDL_DestroyRenderer(m_sdlRenderer);
+    if(m_sdlWindow)
+        SDL_DestroyWindow(m_sdlWindow);
     SDL_Quit();
 }

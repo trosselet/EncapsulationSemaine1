@@ -1,4 +1,6 @@
 #include <iostream>
+#define SDL_MAIN_HANDLED
+#include <SDL2/SDL.h>
 #include "WindowSDL.h"
 #include "SpriteSDL.h"
 
@@ -10,16 +12,20 @@ struct Circle {
 
 int main(int argc, char* argv[])
 {
-	WindowSDL win;
-	SpriteSDL sprite;
+	Window* window = nullptr;
+	Sprite* sprite = nullptr;
+	Circle circle{ 100, 100, 100 };
 
-	win.createWindow(800, 600);
+	window = new WindowSDL();
+	window->createWindow(800, 600);
 
-	while (win.isRunning())
+	while (window->isRunning())
 	{
-		win.pollEvents();
-		win.clear();
-		win.display();
+		window->pollEvents();
+		window->clear();
+		sprite->drawCircle(circle.x, circle.y, circle.radius);
+		window->display();
+		
 	}
 	return 0;
 }

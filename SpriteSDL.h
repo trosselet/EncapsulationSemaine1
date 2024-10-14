@@ -10,7 +10,7 @@ private:
     SDL_Renderer* m_sdlRenderer = nullptr;
 
 public:
-    SpriteSDL();
+    SpriteSDL(SDL_Renderer* renderer);
     void drawCircle(int x, int y, int radius) override;
 };
 
