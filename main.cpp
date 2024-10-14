@@ -25,7 +25,9 @@ int main(int argc, char* argv[])
 		window->clear();
 		sprite->drawCircle(circle.x, circle.y, circle.radius);
 		window->display();
-		
 	}
+	window->close();
+	delete window;
+	delete sprite;
 	return 0;
 }
