@@ -18,6 +18,22 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="SpriteRaylib.cpp" />
+    <ClCompile Include="SpriteSDL.cpp" />
+    <ClCompile Include="Window.cpp" />
+    <ClCompile Include="WindowRaylib.cpp" />
+    <ClCompile Include="WindowSDL.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Sprite.h" />
+    <ClInclude Include="SpriteRaylib.h" />
+    <ClInclude Include="SpriteSDL.h" />
+    <ClInclude Include="Window.h" />
+    <ClInclude Include="WindowRaylib.h" />
+    <ClInclude Include="WindowSDL.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -130,9 +146,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="ConsoleApplication1.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
