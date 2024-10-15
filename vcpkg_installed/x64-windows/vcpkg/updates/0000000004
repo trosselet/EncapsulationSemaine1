@@ -3,7 +3,7 @@ Version: 5.0
 Depends: vcpkg-cmake, vcpkg-cmake-config
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 2cc98f4412d7eeb5b3b4e672149f5e9c208027c3ffb63e229d9e4fcbd81cf69b
+Abi: 28b1e357ec4011f1d4ba5837374dd5982c21452c55888e14404a204653cc214b
 Description: A simple and easy-to-use library to enjoy videogames programming
 Default-Features: use-audio
 Status: purge ok not-installed

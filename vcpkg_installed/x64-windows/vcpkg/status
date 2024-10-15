@@ -2,14 +2,14 @@ Package: vcpkg-cmake-config
 Version: 2024-05-23
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 03271f226303581b1d92c0ec0012f8fcedaae3909eeac080e104367bf8b210f0
+Abi: cae41864839e72b273544ff39ff752dfb276bd375280772895f4d3758291b4be
 Status: install ok installed
 
 Package: vcpkg-cmake
 Version: 2024-04-18
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 9342ace97af36a580ceb2c8b686913eb578d2616a7d1398e96ca7fe0fe43a3df
+Abi: d09228bc83ebe8807066cf73c8eeac33864496a352923a70a9dfc98f7c717a10
 Status: install ok installed
 
 Package: raylib
@@ -17,7 +17,7 @@ Version: 5.0
 Depends: vcpkg-cmake, vcpkg-cmake-config
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 2cc98f4412d7eeb5b3b4e672149f5e9c208027c3ffb63e229d9e4fcbd81cf69b
+Abi: 28b1e357ec4011f1d4ba5837374dd5982c21452c55888e14404a204653cc214b
 Description: A simple and easy-to-use library to enjoy videogames programming
 Default-Features: use-audio
 Status: install ok installed
@@ -34,7 +34,7 @@ Version: 2.30.3
 Depends: vcpkg-cmake, vcpkg-cmake-config
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 55ee253afdce4696c2659d8ff59c618a0e9644c694dfe3039c68565158c5ca8d
+Abi: 8d53200095bd50405a7d85444013832315d0cb1fe27f3b9826914021058674d1
 Description: Simple DirectMedia Layer is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D.
 Status: install ok installed
 

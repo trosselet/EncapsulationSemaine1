@@ -14,7 +14,7 @@
 struct Circle {
 	int x, y;
 	int radius;
-	float dx, dy;
+	int dx, dy;
 };
 
 int main(int argc, char* argv[])
@@ -29,18 +29,34 @@ int main(int argc, char* argv[])
 	std::srand(std::time(nullptr));
 	std::vector<Circle> circles;
 
+#define FPS_INTERVAL 1.0 //seconds.
+
+	Uint32 fps_lasttime = SDL_GetTicks(); //the last recorded time.
+	Uint32 fps_current; //the current FPS.
+	Uint32 fps_frames = 0; //frames passed since the last recorded fps.
+
+
 	for (int i = 0; i < 5; ++i) {
 		Circle circle;
-		circle.radius = 20;
-		circle.x = (std::rand() % (WIDTH - 2 * circle.radius - 1)) + (circle.radius + 1);
-		circle.y = (std::rand() % (HEIGHT - 2 * circle.radius - 1)) + (circle.radius + 1);
-		circle.dx = (std::rand() % 5) + 0.5;
-		circle.dy = (std::rand() % 5) + 0.5;
+		circle.radius = 10;
+		circle.x = (std::rand() % (WIDTH - 2 - circle.radius - 10)) + (circle.radius + 10);
+		circle.y = (std::rand() % (HEIGHT - 2 - circle.radius - 10)) + (circle.radius + 10);
+		circle.dx = (std::rand() % 2) + 1;
+		circle.dy = (std::rand() % 2) + 1;
 		circles.push_back(circle);
 	}
 
 	while (window->isRunning())
 	{
+		fps_frames++;
+		if (fps_lasttime < SDL_GetTicks() - FPS_INTERVAL * 1000)
+		{
+			fps_lasttime = SDL_GetTicks();
+			fps_current = fps_frames;
+			fps_frames = 0;
+			std::cout << fps_current << std::endl;
+		}
+
 		window->pollEvents();
 		window->clear();
 
@@ -48,10 +64,10 @@ int main(int argc, char* argv[])
 			circle.x += circle.dx;
 			circle.y += circle.dy;
 
-			if (circle.x - circle.radius < 1 || circle.x + circle.radius > WIDTH - 1) {
+			if (circle.x - circle.radius <= 1 || circle.x + circle.radius >= WIDTH - 1) {
 				circle.dx = -circle.dx;
 			}
-			if (circle.y - circle.radius < 1 || circle.y + circle.radius > HEIGHT - 1) {
+			if (circle.y - circle.radius <= 1 || circle.y + circle.radius >= HEIGHT - 1) {
 				circle.dy = -circle.dy;
 			}
 
@@ -60,6 +76,10 @@ int main(int argc, char* argv[])
 		}
 
 		window->display();
+
+		
+
+		
 	}
 	window->close();
 	delete window;
